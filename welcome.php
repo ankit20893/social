@@ -56,7 +56,7 @@ require  'config.php';
         <td><?php echo $row["mobile"];?></td>
         <td><?php echo $row["address"];?></td>
         <td><?php echo $row["gender"];?></td>
-        <td><a href="edit.php">Edit</a></td>
+        <td><a href="edit.php?id=<?php echo $row["id"];?>">Edit</a></td>
         <td><a href="logout.php">Logout</a></td>
     </tr>
     </table>
