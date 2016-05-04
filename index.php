@@ -22,11 +22,11 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <h3><a href="index.php">Register yourself </a></h3>
+            <h3><a href="registration.php">Register yourself </a></h3>
 
         </div>
         <div class="col-sm-6">
-            <h3><a href="index.php">Login</a></h3>
+            <h3><a href="login.php">Login</a></h3>
             </div>
 
     </div>
