@@ -40,8 +40,8 @@ if (isset($_GET['id'])){
             <tr><td><?php  echo "<span style='color:green'>".@$msg."</span>";?></td></tr>
             <tr><td>First Name: </td><td><input type="text"  id="fname" name="fname" value="<?php echo $a['first_name'];?>"></td></tr>
             <tr><td>Last Name: </td><td><input type="text"   id="lname" name="lname" value="<?php echo $a['last_name'];?>"></td></tr>
-            <tr><td>Email: </td><td><input type="email"   id="email" name="email" value="<?php echo $a['email'];?>"></td></tr>
-            <tr><td>Password: </td><td><input type="password"   id="password" name="password" value="<?php echo $a['password'];?>"></td></tr>
+            <tr><td>Email: </td><td><input type="email"   id="email" name="email" value="<?php echo $a['email'];?>" required></td></tr>
+            <tr><td>Password: </td><td><input type="password"   id="password" name="password" value="<?php echo $a['password'];?>"required></td></tr>
             <tr><td>Mobile: </td><td><input type="number"   id="mobile" name="mobile" value="<?php echo $a['mobile'];?>"></td></tr>
             <tr><td>Address: </td><td><input type="text"  id="address" name="address" value="<?php echo $a['address'];?>"></td></tr>
             <tr><td>Gender: </td><td><input type="radio" id="gender" name="gender" value="male" checked>male<br>

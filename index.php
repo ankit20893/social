@@ -21,11 +21,11 @@
         <p>Share your experiences!</p>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <h3><a href="registration.php">Register yourself </a></h3>
 
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <h3><a href="login.php">Login</a></h3>
             </div>
 
@@ -34,7 +34,7 @@
 
 
 </body>
-</html>>
+</html>
 <?php
 /**
  * Created by PhpStorm.

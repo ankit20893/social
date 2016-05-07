@@ -6,6 +6,7 @@
  * Time: 15:39
  */
 session_start();
+ob_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,6 +25,7 @@ session_start();
 </head>
 <body>
 <?php if($_SESSION["email"]=='') {
+    //@exit(header("Location: /index.php"));
 header('location:index.php');
 }
 else{
@@ -33,33 +35,44 @@ require  'config.php';
     $result=mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
 
-        echo "<h1>Hello  ".$row["first_name"]." ".$row["last_name"]."</h1>";
+        echo "<h1 align='center'>Hello  ".$row["first_name"]." ".$row["last_name"]."</h1>";
 }
 ?>
-
+<div class="col-sm-6">
 <table class="table">
     <tr><h1>User's details</h1></tr>
-    <tr>
-    <th>id</th>
-        <th>name</th>
-        <th>email</th>
-        <th>mobile</th>
-        <th>address</th>
-        <th>gender</th>
-        <th>action</th>
-        <th>logout</th>
-    </tr>
-    <tr>
-    <td><?php echo $row["id"];?></td>
-        <td><?php echo $row["first_name"]."  ".$row["last_name"];?></td>
-        <td><?php echo $row["email"];?></td>
-        <td><?php echo $row["mobile"];?></td>
-        <td><?php echo $row["address"];?></td>
-        <td><?php echo $row["gender"];?></td>
-        <td><a href="edit.php?id=<?php echo $row["id"];?>">Edit</a></td>
-        <td><a href="logout.php">Logout</a></td>
-    </tr>
+
+      <tr><td><strong>id</strong></td><td><?php echo $row["id"];?></td></tr>
+      <tr><td><strong>name</strong></td><td><?php echo $row["first_name"]."  ".$row["last_name"];?></td></tr>
+       <tr><td><strong>email</strong></td><td><?php echo $row["email"];?></td></tr>
+    <tr><td><strong>mobile</strong></td><td><?php echo $row["mobile"];?></td></tr>
+    <tr><td><strong>address</strong></td><td><?php echo $row["address"];?></td></tr>
+    <tr><td><strong>gender</strong></td><td><?php echo $row["gender"];?></td></tr>
+    <tr><td><strong><a href="edit.php?id=<?php echo $row["id"];?>">Edit Profile</a></strong></td><td><strong><a href="logout.php">Logout</a></strong></td></tr>
+
+
     </table>
+    </div>
+<div class="col-sm-6">
+    <?php if($row["profilePic"]==""){
+        echo "<img src='uploads/default.jpg' title='default user'>";
+	
+	?>
+        <a href="upload.php?id=<?php echo $row["id"];?>">plz upload photo</a>
+    <?php
+}
+    else{
+		$dir="uploads";
+		echo '<img src="', $dir, '/', $row['profilePic'], '" alt="', $row['profilePic'], '" />';
+       // echo "<img src='uploads/'.$row['profilePic']>";
+       ?>
+   
+       <a href="upload.php?id=<?php echo $row["id"];?>">upload photo</a>
+       <?php
+    }
+    ?>
+    </div>
+
 </body>
 
 </html>

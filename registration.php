@@ -10,9 +10,30 @@ extract($_POST);
 
 if(isset($submit)) {
     $pass=md5($password);
-    $sql = "INSERT INTO users VALUES('','$fname','$lname','$pass','$mobile','$address','$gender','$email')";
+    $sql = "INSERT INTO users VALUES('','$fname','$lname','$pass','$mobile','$address','$gender','$email','')";
     if (mysqli_query($conn, $sql)) {
+		
+$to = "ankit20893@gmail.com";
+         $subject = "This is subject";
+         
+         $message = "<b>This is HTML message.</b>";
+         $message .= "<h1>This is headline.</h1>";
+         
+         $header = "From:ankit.singh@mobiloitte.in \r\n";
+         $header .= "Cc:ankit.singh@mobiloitte.in \r\n";
+         $header .= "MIME-Version: 1.0\r\n";
+         $header .= "Content-type: text/html\r\n";
+         
+         $retval = mail ($to,$subject,$message,$header);
+         
+         if( $retval == true ) {
+            echo "Message sent successfully...";
+         }else {
+            echo "Message could not be sent...";
+         }
+         
         $msg="Records added successfully.";
+       // header('location:login.php');
     } else {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
     }
@@ -43,17 +64,17 @@ if(isset($submit)) {
     <table border="0" class="table">
     <form class="form-control" name="regis"  action="#" method="post" enctype="multipart/form-data">
         <tr><td><?php  echo "<span style='color:green'>".@$msg."</span>";?></td></tr>
-        <tr><td>First Name: </td><td><input type="text" onBlur=" check_blank();" id="fname" name="fname"></td></tr>
-        <tr><td>Last Name: </td><td><input type="text" onblur="return check_blank();"  id="lname" name="lname"></td></tr>
-        <tr><td>Email: </td><td><input type="email" onblur="return check_blank();"  id="email" name="email"></td></tr>
-        <tr><td>Password: </td><td><input type="password" onblur="return check_blank();"  id="password" name="password"></td></tr>
-        <tr><td>Mobile: </td><td><input type="number" onblur="return check_blank();"  id="mobile" name="mobile"></td></tr>
-        <tr><td>Address: </td><td><input type="text" onblur="return check_blank();"  id="address" name="address"></td></tr>
+        <tr><td>First Name: </td><td><input type="text"  id="fname" name="fname"></td></tr>
+        <tr><td>Last Name: </td><td><input type="text"   id="lname" name="lname"></td></tr>
+        <tr><td>Email: </td><td><input type="email"   id="email" name="email"></td></tr>
+        <tr><td>Password: </td><td><input type="password"   id="password" name="password"></td></tr>
+        <tr><td>Mobile: </td><td><input type="number"   id="mobile" name="mobile"></td></tr>
+        <tr><td>Address: </td><td><input type="text"   id="address" name="address"></td></tr>
         <tr><td>Gender: </td><td><input type="radio" id="gender" name="gender" value="male" checked>male<br>
                 <input type="radio" id="gender" name="gender" value="female">female
             </td></tr>
-        <tr><td><input type="submit" name="submit" value="Submit"></td>
-            <td><input type="submit" name="show" value="Show"></td></tr>
+        <tr><td><input onclick="return check_blank();" type="submit" name="submit" value="Submit"></td>
+            </tr>
             </form>
     </table>
 
